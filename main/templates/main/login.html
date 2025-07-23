@@ -1,0 +1,85 @@
+{% load static %} {% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login - Helpdesk</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.0.0/dist/css/materialize.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f3f3f3;
+        font-family: "Roboto", Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .login-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 30px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      }
+      .center-text {
+        text-align: center;
+      }
+      .btn-logout-style {
+        width: 100%;
+        background-color: #ef5350 !important;
+        color: white !important;
+        border: none;
+        padding: 10px 0;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 3px;
+        font-size: 1rem;
+        text-transform: none;
+        box-shadow: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-logout-style:hover,
+      .btn-logout-style:focus,
+      .btn-logout-style:active {
+        background-color: #d84343 !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-card z-depth-2">
+      <h5 class="center-text">Acesso ao Sistema</h5>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <div class="input-field">
+          <label for="username">Usuário</label>
+          {{ form.username|add_class:"validate" }}
+        </div>
+
+        <div class="input-field">
+          <label for="password">Senha</label>
+          {{ form.password|add_class:"validate" }}
+        </div>
+
+        {% if form.errors %}
+        <p class="red-text">Usuário ou senha inválidos.</p>
+        {% endif %}
+
+        <div class="center-text" style="margin-top: 20px">
+          <button type="submit" class="btn-logout-style">Entrar</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/materialize-css@1.0.0/dist/js/materialize.min.js"></script>
+  </body>
+</html>

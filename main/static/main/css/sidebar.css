@@ -1,0 +1,83 @@
+/* Sidebar  */
+
+.sidebar {
+  min-width: 300px;
+  color: #e6312e;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sidebar .top-stripe,
+.bottom-stripe {
+  height: 4rem;
+  background-color: #263238;
+}
+
+.sidebar-content {
+  margin-bottom: auto;
+  width: auto;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-size: 52px;
+  margin-bottom: 1rem;
+  padding: 0 10px 0 10px;
+  font-weight: bold;
+}
+
+.sidebar p {
+  padding: 26px 10px 26px 10px;
+  font-weight: 500;
+  font-size: 18px;
+  font-weight: bold;
+  color: #263238;
+}
+
+.sidebar a {
+  width: auto;
+  color: #455a64;
+  text-decoration: none;
+  display: block;
+  margin: 0.75rem 0;
+  font-weight: 500;
+  transition: background-color 0.3s, padding-left 0.3s;
+  padding: 26px 10px 26px 10px;
+  border-radius: 3px;
+}
+
+.sidebar a:hover {
+  background-color: #455a64;
+  padding-left: 1rem;
+  color: #ffffff;
+}
+
+.sidebar a.active {
+  background-color: #455a64;
+  color: #ffffff;
+  padding-left: 1rem;
+}
+
+/* Rodapé */
+.sidebar-footer {
+  margin-top: 15%;
+  border-top: 1px solid #455a64;
+  padding-top: 1rem;
+}
+
+.sidebar-footer button {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  background-color: #ef5350;
+  color: white;
+  border: none;
+  padding: 10px 0;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 1rem;
+}

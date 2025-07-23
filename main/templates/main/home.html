@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Helpdesk - Início</title>
+    <link rel="stylesheet" href="{% static 'main/css/body.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/sidebar.css' %}">
+  </head>
+
+  <body>
+    <div class="layout">
+      <nav class="sidebar">
+        <div class="top-stripe"></div>
+        <div class="sidebar-content">
+          <h2>Helpdesk</h2>
+          <p>Bem-vindo, {{ usuario.first_name|default:usuario.username }}!</p>
+
+          <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Início</a>
+          <a href="{% url 'meus_chamados' %}" class="{% if request.resolver_match.url_name == 'meus_chamados' %}active{% endif %}">Meus chamados</a>
+          <a href="{% url 'novo_chamado' %}" class="{% if request.resolver_match.url_name == 'novo_chamado' %}active{% endif %}">Novo chamado</a>
+          {% if usuario.is_operador %}
+          <a href="{% url 'chamados_atribuidos' %}" class="{% if request.resolver_match.url_name == 'chamados_atribuidos' %}active{% endif %}">Chamados atribuídos</a>
+          {% endif %}
+          {% if usuario.is_admin %}
+          <a href="{% url 'painel_admin' %}" class="{% if request.resolver_match.url_name == 'painel_admin' %}active{% endif %}">Painel de administração</a>
+          {% endif %}
+
+          <div class="sidebar-footer">
+            <form action="{% url 'logout' %}" method="post" style="margin: 0">
+              {% csrf_token %}
+              <button type="submit" class="btn-logout-style">Sair</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="bottom-stripe"></div>
+      </nav>
+
+      <main class="main-content">
+        <div class="main-div-content">
+          {% if page == 'meus_chamados' %}
+            {% include 'main/meus_chamados.html' %}
+          {% elif page == 'novo_chamado' %}
+            {% include 'main/novo_chamado.html' %}
+          {% elif page == 'chamados_atribuidos' %}
+            {% include 'main/chamados_atribuidos.html' %}
+          {% elif page == 'painel_admin' %}
+            {% include 'main/painel_admin.html' %}
+          {% else %}
+            {% include 'main/home_content.html' %}
+          {% endif %}
+      </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modalChamado" class="modal-overlay">
+      <div class="modal-content">
+        <span class="modal-close" onclick="fecharModal()">&times;</span>
+        <h3 id="modalTitulo">Detalhes do Chamado</h3>
+        <div id="modalBody">
+          <!-- Conteúdo carregado por JavaScript -->
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'main/js/modal.js' %}"></script>
+  </body>
+</html>
