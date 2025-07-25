@@ -40,7 +40,9 @@ password: 123
 ```
 
 create super user
+```
 python3 manager.py createsuperuser
+```
 
 to full admin functions mark user as_operador and as_admin
 
