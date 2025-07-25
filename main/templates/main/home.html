@@ -5,10 +5,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>Helpdesk - Início</title>
+    <link rel="stylesheet" href="{% static 'main/css/reset.css' %}" />
     <link rel="stylesheet" href="{% static 'main/css/body.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'main/css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/sidebar.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/modal.css' %}">
   </head>
 
   <body>
@@ -30,7 +32,7 @@
           {% endif %}
 
           <div class="sidebar-footer">
-            <form action="{% url 'logout' %}" method="post" style="margin: 0">
+            <form action="{% url 'logout' %}" method="post">
               {% csrf_token %}
               <button type="submit" class="btn-logout-style">Sair</button>
             </form>
@@ -50,6 +52,8 @@
             {% include 'main/chamados_atribuidos.html' %}
           {% elif page == 'painel_admin' %}
             {% include 'main/painel_admin.html' %}
+          {% elif page == 'chamados_criados' %}
+            {% include 'main/chamados_criados.html' %}
           {% else %}
             {% include 'main/home_content.html' %}
           {% endif %}

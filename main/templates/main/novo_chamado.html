@@ -1,1 +1,19 @@
-<p>teste novo_chamado todo</p>
+{% block content %}
+<div class="novo-chamado">
+  <div class="novo-title">
+    <h2>Novo Chamado</h2>
+  </div>
+  <form method="post">
+    {% csrf_token %}
+    <div>
+      <label for="id_motivo_categoria"><strong>Motivo:</strong></label>
+      {{ form.motivo_categoria }}
+    </div>
+    <div>
+      <label for="id_descricao"><strong>Descrição:</strong></label>
+      {{ form.descricao }}
+    </div>
+    <button class="novo-btn" type="submit">Enviar Chamado</button>
+  </form>
+</div>
+{% endblock %}

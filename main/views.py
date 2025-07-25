@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import Chamado
+from .forms import ChamadoForm
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -37,10 +38,16 @@ def meus_chamados(request):
 
 @login_required
 def novo_chamado(request):
-    return render(request, "main/home.html", {
-        'usuario': request.user,
-        'page': 'novo_chamado'
-    })
+    if request.method == 'POST':
+        form = ChamadoForm(request.POST)
+        if form.is_valid():
+            chamado = form.save(commit=False)
+            chamado.usuario = request.user
+            chamado.save()
+            return render(request, "main/home.html", {'page': 'chamados_criados', 'usuario': request.user})  # ou outra URL
+    else:
+        form = ChamadoForm()
+    return render(request, "main/home.html", {'page': 'novo_chamado', 'form': form, 'usuario': request.user})
 
 @login_required
 def chamados_atribuidos(request):
@@ -51,6 +58,13 @@ def chamados_atribuidos(request):
 
 @login_required
 def painel_admin(request):
+    return render(request, "main/home.html", {
+        'usuario': request.user,
+        'page': 'painel_admin'
+    })
+
+@login_required
+def chamados_criados(request): 
     return render(request, "main/home.html", {
         'usuario': request.user,
         'page': 'painel_admin'

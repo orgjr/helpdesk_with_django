@@ -1,0 +1,88 @@
+/* Container geral da página de novo chamado */
+.novo-chamado {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  width: 900px;
+  height: 100%;
+}
+
+/* Título */
+.novo-title h2 {
+  font-size: 26px;
+  margin-bottom: 2rem;
+  color: #263238;
+}
+
+/* Formulário */
+.novo-chamado form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 20px;
+}
+
+/* Labels */
+.novo-chamado label {
+  font-weight: bold;
+  color: #263238;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Campos de entrada */
+.novo-chamado input,
+.novo-chamado select,
+.novo-chamado textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #cfd8dc;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #f5f5f5;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  resize: vertical;
+}
+
+.novo-chamado input:focus,
+.novo-chamado select:focus,
+.novo-chamado textarea:focus {
+  outline: none;
+  border-color: #263238;
+  box-shadow: 0 0 0 2px rgba(38, 50, 56, 0.2);
+  background-color: #fff;
+}
+
+/* Botão de envio */
+.novo-chamado .novo-btn {
+  align-self: flex-start;
+  padding: 10px 24px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.novo-chamado .novo-btn:hover {
+  background-color: #37474f;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .novo-chamado {
+    padding: 1.5rem;
+  }
+
+  .novo-title h2 {
+    font-size: 22px;
+  }
+}

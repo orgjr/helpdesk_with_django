@@ -1,7 +1,8 @@
 {% for chamado in chamados_abertos %}
 <div class="chamados-home">
     <div class="chamado-detalhes">
-        <strong>#{{ chamado.id }}</strong> - {{ chamado.motivo_categoria }} <br>
+        <strong>ID: </strong>{{ chamado.id }} <br>
+        {{ chamado.motivo_categoria }} <br>
         <em>
             Aberto por {{ chamado.usuario.get_full_name|default:chamado.usuario.username }} <br> 
             em {{ chamado.data_abertura|date:"d/m/Y" }} às {{ chamado.data_abertura|date:"H:i" }} <br>
@@ -14,5 +15,7 @@
     <hr>
 </div>
     {% empty %} 
-    <p>Nenhum chamado aberto no momento.
+    <p>Nenhum chamado aberto no momento.</p>
 {% endfor %}
+
+

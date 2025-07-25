@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Sistema Helpdesk{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/reset.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/body.css' %}" />
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}" />
+  </head>
+  <body>
+    <header>
+      <!-- Cabeçalho, navbar, etc -->
+    </header>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer>
+      <!-- Rodapé -->
+    </footer>
+  </body>
+</html>

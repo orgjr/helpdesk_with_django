@@ -1,21 +1,40 @@
 /* Sidebar  */
 
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 999;
   min-width: 300px;
   color: #e6312e;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .sidebar .top-stripe,
 .bottom-stripe {
   height: 4rem;
+  min-width: 300px;
+  z-index: 999;
   background-color: #263238;
+}
+.top-stripe {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.bottom-stripe {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-top: auto;
 }
 
 .sidebar-content {
-  margin-bottom: auto;
+  margin: auto 0 auto 0;
   width: auto;
   background-color: #fafafa;
   display: flex;
@@ -66,6 +85,7 @@
   margin-top: 15%;
   border-top: 1px solid #455a64;
   padding-top: 1rem;
+  margin: 0;
 }
 
 .sidebar-footer button {
