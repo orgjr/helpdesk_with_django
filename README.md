@@ -33,9 +33,11 @@ python3 manage.py runserver 127.0.0.1:8080
 Access http://127.0.0.1:8080 in a web browser
 
 
-default admin: 
+default admin
+```
 user: admin
 password: 123
+```
 
 create super user
 python3 manager.py createsuperuser
