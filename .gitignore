@@ -1,0 +1,14 @@
+# Ambiente virtual
+venv/
+ENV/
+env/
+.venv/
+.ENV/
+
+# Cache
+__pycache__/
+*.py[cod]
+
+# Configurações do editor
+.vscode/
+.idea/
