@@ -15,11 +15,9 @@ git clone https://github.com/orgjr/helpdesk_with_django.git
 
 cd helpdesk_with_django
 
-python3 -m venv venv
-py -m venv venv #windows
+py -m venv venv 
 
-source venv/bin/activate
-.\venv\Scripts\activate #windows
+.\venv\Scripts\activate
 
 py -m pip install -r requirements.txt
 
