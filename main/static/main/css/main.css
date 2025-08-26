@@ -7,11 +7,8 @@ main.main-content {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  /* flex: 1; garante que main cresça dentro da layout flexível  */
-}
-
-main.main-content .main-div-content {
   width: 100%;
+  /* flex: 1; garante que main cresça dentro da layout flexível  */
 }
 
 /* Exibição dos chamados */
@@ -25,7 +22,7 @@ main.main-content .main-div-content {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  height: 160px;
+  min-height: 160px;
   width: 100%;
 }
 

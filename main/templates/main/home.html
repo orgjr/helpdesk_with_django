@@ -21,7 +21,11 @@
           <h2>Helpdesk</h2>
           <p>Bem-vindo, {{ usuario.first_name|default:usuario.username }}!</p>
 
+          {% if usuario.is_operador %}
           <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Início</a>
+          {% else %}
+          <a href="{% url 'home_all' %}" class="{% if request.resolver_match.url_name == 'home_all' %}active{% endif %}">Início</a>
+          {% endif %}
           <a href="{% url 'meus_chamados' %}" class="{% if request.resolver_match.url_name == 'meus_chamados' %}active{% endif %}">Meus chamados</a>
           <a href="{% url 'novo_chamado' %}" class="{% if request.resolver_match.url_name == 'novo_chamado' %}active{% endif %}">Novo chamado</a>
           {% if usuario.is_operador %}
@@ -43,20 +47,21 @@
       </nav>
 
       <main class="main-content">
-        <div class="main-div-content">
-          {% if page == 'meus_chamados' %}
-            {% include 'main/meus_chamados.html' %}
-          {% elif page == 'novo_chamado' %}
-            {% include 'main/novo_chamado.html' %}
-          {% elif page == 'chamados_atribuidos' %}
-            {% include 'main/chamados_atribuidos.html' %}
-          {% elif page == 'painel_admin' %}
-            {% include 'main/painel_admin.html' %}
-          {% elif page == 'chamados_criados' %}
-            {% include 'main/chamados_criados.html' %}
-          {% else %}
-            {% include 'main/home_content.html' %}
-          {% endif %}
+        {% if page == 'meus_chamados' %}
+          {% include 'main/meus_chamados.html' %}
+        {% elif page == 'novo_chamado' %}
+          {% include 'main/novo_chamado.html' %}
+        {% elif page == 'chamados_atribuidos' %}
+          {% include 'main/chamados_atribuidos.html' %}
+        {% elif page == 'painel_admin' %}
+          {% include 'main/painel_admin.html' %}
+        {% elif page == 'chamados_criados' %}
+          {% include 'main/chamados_criados.html' %}
+        {% elif page == 'home_all' %}
+          {% include 'main/home_all.html' %}
+        {% else %}
+          {% include 'main/home_content.html' %}
+        {% endif %}
       </main>
     </div>
 

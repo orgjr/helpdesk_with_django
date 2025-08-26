@@ -1,1 +1,21 @@
-<p>teste meus_chamados todo</p>
+{% for chamado in chamados_usuarios %}
+<div class="chamados-home">
+    <div class="chamado-detalhes">
+        <strong>ID: </strong>{{ chamado.id }} <br>
+        {{ chamado.motivo_categoria }} <br>
+        <em>
+            Aberto por {{ chamado.usuario.get_full_name|default:chamado.usuario.username }} <br> 
+            em {{ chamado.data_abertura|date:"d/m/Y" }} às {{ chamado.data_abertura|date:"H:i" }} <br>
+            <strong>status: </strong> {{ chamado.status }} 
+        </em>
+    </div>
+    <div class="chamado-descricao">
+        {{ chamado.descricao|truncatechars:2000 }}</p>
+    </div>
+    <hr>
+</div>
+    {% empty %} 
+    <p>Nenhum chamado aberto no momento.</p>
+{% endfor %}
+
+
